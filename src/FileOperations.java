@@ -42,7 +42,6 @@ public class FileOperations
                 return;
             }
 
-            JOptionPane.showMessageDialog(null, "Sie wurden erfolgreich eingeloggt!", "Login erfolgreich", JOptionPane.INFORMATION_MESSAGE);
             JOptionPane.showMessageDialog(null, "Das Geheimnis lautet: " + getSecret(), "Geheimnis", JOptionPane.INFORMATION_MESSAGE);
 
         } catch(Exception ex){

@@ -4,13 +4,13 @@ public class User implements Serializable
 {
 
     private String username;
-    private String password;
+    private char[] password;
     private boolean registration;
 
     public User(String username, String password, boolean registration){
 
         this.username = username;
-        this.password = password;
+        this.password = Encryption.encrypt(password);
         this.registration = registration;
 
         checkUser();
@@ -37,16 +37,16 @@ public class User implements Serializable
         this.username = username;
     }
 
-    public String getPassword(){
+    public char[] getPassword(){
         return password;
     }
 
     public void setPassword(String password){
-        this.password = password;
+        this.password = Encryption.encrypt(password);
     }
 
     @Override
     public String toString(){
-        return username + "|" + password;
+        return username + "|" + String.valueOf(password);
     }
 }
