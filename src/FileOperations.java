@@ -1,16 +1,25 @@
 import javax.swing.*;
 import java.io.*;
+import java.util.Date;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileOperations
 {
 
+    // Logger
+
+    private static final Logger log = Logger.getLogger(FileOperations.class.getName());
+
     // Benutzer aus Textdatei auslesen
 
-    public static void readUser(User user){
+    public static void readUser(User user) {
 
         File file = null;
         FileReader fr = null;
         BufferedReader reader = null;
+        Date currDate = new Date();
 
         try {
 
@@ -22,6 +31,8 @@ public class FileOperations
 
             fr = new FileReader(file);
             reader = new BufferedReader(fr);
+
+            log.addHandler(new FileHandler("log.xml"));
 
             boolean userExists = false;
 
@@ -37,10 +48,13 @@ public class FileOperations
             }
 
             if (!userExists){
+                log.log(Level.INFO, "Test");
                 JOptionPane.showMessageDialog(null, "Sie konnten nicht eingeloggt werden. Bitte registrieren Sie sich!", "Login fehlerhaft", JOptionPane.ERROR_MESSAGE);
                 Login.register();
                 return;
             }
+
+            log.log(Level.INFO, "Test1");
 
             JOptionPane.showMessageDialog(null, "Das Geheimnis lautet: " + getSecret(), "Geheimnis", JOptionPane.INFORMATION_MESSAGE);
 
