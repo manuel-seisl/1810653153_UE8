@@ -1,7 +1,7 @@
 public class Utils
 {
 
-    // Passwort formatieren
+    // Passwort formatieren (z.B. aa###bb)
 
     public static String formatPassword(String password){
 

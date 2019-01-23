@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Main
 {
 
@@ -6,6 +8,10 @@ public class Main
         // Aufruf um Geheimnis auszulesen
 
         getSecret();
+
+        // Anzahl an versuchte Logins auslesen
+
+        //JOptionPane.showMessageDialog(null, "Sie haben " + FileOperations.getFailedLogins(JOptionPane.showInputDialog("Bitte Benutzername eingeben:")) + "x versucht sich einzuloggen.");
 
     }
 

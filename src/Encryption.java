@@ -1,9 +1,7 @@
 public class Encryption
 {
 
-    // Anzahl der zu verschiebenden Stellen
-
-    private static final int OFFSET = 3;
+    private static final int OFFSET = 3; // Anzahl der zu verschiebenden Stellen
 
     // Verschlüsselung - Verschieben von Zeichen / ASCII
 

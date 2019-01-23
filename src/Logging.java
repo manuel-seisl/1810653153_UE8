@@ -7,7 +7,7 @@ import java.util.Date;
 public class Logging
 {
 
-    // Logging - Record speichern
+    // Record speichern
 
     public static void saveLog(User user, boolean state){
 
@@ -18,6 +18,8 @@ public class Logging
         try {
 
             file = new File("log.txt");
+
+            // Datei erstellen, falls noch nicht vorhanden
 
             if (!file.exists()){
                 file.createNewFile();

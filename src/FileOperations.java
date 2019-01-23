@@ -11,6 +11,7 @@ public class FileOperations
         File file = null;
         FileReader fr = null;
         BufferedReader reader = null;
+        boolean userExists = false;
 
         try {
 
@@ -24,8 +25,6 @@ public class FileOperations
 
             fr = new FileReader(file);
             reader = new BufferedReader(fr);
-
-            boolean userExists = false;
 
             while (true){
 
@@ -47,9 +46,12 @@ public class FileOperations
 
                 Logging.saveLog(user, false);
 
-                // Meldung anzeigen und zu Registrierung springen
+                // Fehlermeldung anzeigen
 
                 JOptionPane.showMessageDialog(null, "Sie konnten nicht eingeloggt werden. Bitte registrieren Sie sich!", "Login fehlerhaft", JOptionPane.ERROR_MESSAGE);
+
+                // Registrierung
+
                 Login.register();
 
                 return;
@@ -139,6 +141,41 @@ public class FileOperations
         }
 
         return secret;
+
+    }
+
+    // Anzahl an versuchte Logins auslesen
+
+    public static int getFailedLogins(String username){
+
+        File file = null;
+        FileReader fr = null;
+        BufferedReader reader = null;
+
+        int counter = 0;
+
+        try {
+
+            file = new File("log.txt");
+            fr = new FileReader(file);
+            reader = new BufferedReader(fr);
+
+            while (true){
+
+                String line = reader.readLine();
+                if (line == null) break;
+
+                if (line.contains("false") && line.contains(username + " ")){
+                    counter++;
+                }
+
+            }
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return counter;
 
     }
 

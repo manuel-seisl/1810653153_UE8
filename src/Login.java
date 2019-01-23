@@ -40,7 +40,7 @@ public class Login
             String username = JOptionPane.showInputDialog(null, "Bitte Benutzername eingeben:", "Registrierung", JOptionPane.INFORMATION_MESSAGE);
             String password = JOptionPane.showInputDialog(null, "Bitte Passwort eingeben:", "Registrierung", JOptionPane.INFORMATION_MESSAGE);
 
-            // Checken ob Benutzer - Benutzername und Passwort eingegeben hat, ansonsten Fehlermeldung anzeigen
+            // Checken ob Benutzer - Benutzername und Passwort eingegeben hat, ansonsten Registeriung noch einmal anzeigen
 
             if (username.equals("") || password.equals("")){
                 JOptionPane.showMessageDialog(null, "Sie konnten nicht registriert werden. Sie haben keinen Benutzernamen oder Passwort eingegeben!");
