@@ -1,9 +1,11 @@
 public class Encryption
 {
 
+    // Anzahl der zu verschiebenden Stellen
+
     private static final int OFFSET = 3;
 
-    // Verschlüsselung - verschieben vom Zeichen um 3 Stellen / ASCII
+    // Verschlüsselung - Verschieben von Zeichen / ASCII
 
     public static char[] encrypt(String text){
 

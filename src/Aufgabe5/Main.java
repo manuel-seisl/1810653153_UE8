@@ -79,7 +79,7 @@ public class Main
 
             writer.close();
 
-        } catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
         }
 

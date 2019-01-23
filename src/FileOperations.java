@@ -1,29 +1,22 @@
 import javax.swing.*;
 import java.io.*;
-import java.util.Date;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FileOperations
 {
 
-    // Logger
-
-    private static final Logger log = Logger.getLogger(FileOperations.class.getName());
-
     // Benutzer aus Textdatei auslesen
 
-    public static void readUser(User user) {
+    public static void readUser(User user){
 
         File file = null;
         FileReader fr = null;
         BufferedReader reader = null;
-        Date currDate = new Date();
 
         try {
 
             file = new File("user.txt");
+
+            // Datei erstellen, falls noch nicht vorhanden
 
             if (!file.exists()){
                 file.createNewFile();
@@ -32,13 +25,12 @@ public class FileOperations
             fr = new FileReader(file);
             reader = new BufferedReader(fr);
 
-            log.addHandler(new FileHandler("log.xml"));
-
             boolean userExists = false;
 
             while (true){
 
                 String line = reader.readLine();
+
                 if (line == null) break;
 
                 if (line.equals(user.toString())){
@@ -47,18 +39,32 @@ public class FileOperations
 
             }
 
+            // Falls Benutzer nicht existiert, Registrierung anzeigen
+
             if (!userExists){
-                log.log(Level.INFO, "Test");
+
+                // Logging
+
+                Logging.saveLog(user, false);
+
+                // Meldung anzeigen und zu Registrierung springen
+
                 JOptionPane.showMessageDialog(null, "Sie konnten nicht eingeloggt werden. Bitte registrieren Sie sich!", "Login fehlerhaft", JOptionPane.ERROR_MESSAGE);
                 Login.register();
+
                 return;
+
             }
 
-            log.log(Level.INFO, "Test1");
+            // Logging
+
+            Logging.saveLog(user, true);
+
+            // Geheimnis anzeigen
 
             JOptionPane.showMessageDialog(null, "Das Geheimnis lautet: " + getSecret(), "Geheimnis", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
         }
 
@@ -76,6 +82,8 @@ public class FileOperations
 
             file = new File("user.txt");
 
+            // Datei erstellen, falls noch nicht vorhanden
+
             if (!file.exists()){
                 file.createNewFile();
             }
@@ -88,15 +96,21 @@ public class FileOperations
             writer.write(user.toString() + seperator);
             writer.close();
 
+            // Meldung anzeigen
+
             JOptionPane.showMessageDialog(null, "Sie wurden erfolgreich registriert!");
 
-        } catch(Exception ex){
+            // Geheimnis anzeigen
+
+            JOptionPane.showMessageDialog(null, "Das Geheimnis lautet: " + getSecret(), "Geheimnis", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception ex){
             ex.printStackTrace();
         }
 
     }
 
-    // Geheimnis auslesen
+    // Geheimnis aus Textdatei auslesen
 
     public static String getSecret(){
 
@@ -120,7 +134,7 @@ public class FileOperations
 
             }
 
-        } catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
         }
 

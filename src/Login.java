@@ -3,15 +3,13 @@ import javax.swing.*;
 public class Login
 {
 
-    public static void main(String[] args){
-
-    }
-
     // Login
 
     public static void login(){
 
         try {
+
+            // Eingabe Benutzername und Passwort
 
             String username = JOptionPane.showInputDialog(null, "Bitte Benutzername eingeben:", "Login", JOptionPane.INFORMATION_MESSAGE);
             String password = JOptionPane.showInputDialog(null, "Bitte Passwort eingeben:", "Login", JOptionPane.INFORMATION_MESSAGE);
@@ -25,8 +23,7 @@ public class Login
                 User user = new User(username, password, false);
             }
 
-
-        } catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
         }
 
@@ -37,6 +34,8 @@ public class Login
     public static void register(){
 
         try {
+
+            // Eingabe Benutzername und Passwort
 
             String username = JOptionPane.showInputDialog(null, "Bitte Benutzername eingeben:", "Registrierung", JOptionPane.INFORMATION_MESSAGE);
             String password = JOptionPane.showInputDialog(null, "Bitte Passwort eingeben:", "Registrierung", JOptionPane.INFORMATION_MESSAGE);
@@ -51,7 +50,7 @@ public class Login
             }
 
 
-        } catch(Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
         }
 

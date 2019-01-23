@@ -17,12 +17,11 @@ public class User implements Serializable
 
     }
 
-    // Checken ob Benutzer - Registrierung oder Login
+    // Checken ob Benutzer - Registrierung oder Login angezeigt bekommt
 
     public void checkUser(){
         if (registration){
             FileOperations.saveUser(this);
-            FileOperations.readUser(this);
         } else {
             FileOperations.readUser(this);
         }
